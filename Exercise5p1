@@ -1,20 +1,21 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JButton;
-import java.awt.Font;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Exercise5p1 {
+public class PlusMinusExercise {
 
 	private JFrame frame;
-	private JTextField IntTextField;
-	private JTextField InttextField;
-	private JTextField AnswertextField;
+	private JTextField IntTextField1;
+	private JTextField IntTextField2;
+	private JTextField AnswerTextField;
 
 	/**
 	 * Launch the application.
@@ -23,7 +24,7 @@ public class Exercise5p1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Exercise5p1 window = new Exercise5p1();
+					PlusMinusExercise window = new PlusMinusExercise();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +36,7 @@ public class Exercise5p1 {
 	/**
 	 * Create the application.
 	 */
-	public Exercise5p1() {
+	public PlusMinusExercise() {
 		initialize();
 	}
 
@@ -44,68 +45,71 @@ public class Exercise5p1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 545, 369);
+		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnAddition = new JButton("Add");
-		btnAddition.addActionListener(new ActionListener() {
+		IntTextField1 = new JTextField();
+		IntTextField1.setHorizontalAlignment(SwingConstants.CENTER);
+		IntTextField1.setBounds(26, 55, 161, 47);
+		frame.getContentPane().add(IntTextField1);
+		IntTextField1.setColumns(10);
+		
+		IntTextField2 = new JTextField();
+		IntTextField2.setHorizontalAlignment(SwingConstants.CENTER);
+		IntTextField2.setColumns(10);
+		IntTextField2.setBounds(248, 55, 161, 47);
+		frame.getContentPane().add(IntTextField2);
+		
+		JButton AddButton = new JButton("ADD");
+		AddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int num1,num2,answer;
+				int num1, num2, answer;
 				try {
-					  num1 = Integer.parseInt(IntTextField.getText());
-					  num2 = Integer.parseInt(InttextField.getText());
-					  
-					  answer = num1+num2;
-					  AnswertextField.setText(Integer.toString(answer));
-				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(null, "Please enter the integer correctly");
+					num1 = Integer.parseInt(IntTextField1.getText());
+					num2 = Integer.parseInt(IntTextField2.getText());
+					answer = num1+num2;
+					AnswerTextField.setText(Integer.toString(answer));
+					
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Please enter the valid integer.");
 				}
 			}
 		});
-		btnAddition.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnAddition.setBounds(101, 113, 135, 35);
-		frame.getContentPane().add(btnAddition);
+		AddButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		AddButton.setBounds(26, 113, 161, 28);
+		frame.getContentPane().add(AddButton);
 		
-		JButton btnMinus = new JButton("Minus");
-		btnMinus.addActionListener(new ActionListener() {
+		JButton MinusButton = new JButton("MINUS");
+		MinusButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int num1,num2,answer;
+				int num1, num2, answer;
 				try {
-					  num1 = Integer.parseInt(IntTextField.getText());
-					  num2 = Integer.parseInt(InttextField.getText());
-					  
-					  answer = num1-num2;
-					  AnswertextField.setText(Integer.toString(answer));
-				} catch (Exception e1) {
-					JOptionPane.showMessageDialog(null, "Please enter the integer correctly");
+					num1 = Integer.parseInt(IntTextField1.getText());
+					num2 = Integer.parseInt(IntTextField2.getText());
+					answer = num1-num2;
+					AnswerTextField.setText(Integer.toString(answer));
+					
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "Please enter the valid integer.");
 				}
 			}
 		});
-		btnMinus.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnMinus.setBounds(326, 113, 135, 35);
-		frame.getContentPane().add(btnMinus);
+		MinusButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		MinusButton.setBounds(248, 116, 161, 28);
+		frame.getContentPane().add(MinusButton);
 		
-		IntTextField = new JTextField();
-		IntTextField.setBounds(101, 65, 135, 35);
-		frame.getContentPane().add(IntTextField);
-		IntTextField.setColumns(10);
+		JLabel AnswerLabel = new JLabel("ANSWER");
+		AnswerLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		AnswerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		AnswerLabel.setBounds(72, 192, 143, 28);
+		frame.getContentPane().add(AnswerLabel);
 		
-		InttextField = new JTextField();
-		InttextField.setColumns(10);
-		InttextField.setBounds(326, 65, 135, 35);
-		frame.getContentPane().add(InttextField);
-		
-		JLabel lblAnswer = new JLabel("Answer");
-		lblAnswer.setFont(new Font("Trebuchet MS", Font.BOLD, 24));
-		lblAnswer.setBounds(145, 212, 91, 35);
-		frame.getContentPane().add(lblAnswer);
-		
-		AnswertextField = new JTextField();
-		AnswertextField.setColumns(10);
-		AnswertextField.setBounds(283, 216, 135, 35);
-		frame.getContentPane().add(AnswertextField);
+		AnswerTextField = new JTextField();
+		AnswerTextField.setColumns(10);
+		AnswerTextField.setBounds(225, 183, 161, 47);
+		frame.getContentPane().add(AnswerTextField);
 	}
 }
